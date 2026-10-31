@@ -1,21 +1,42 @@
-# gramps.top
+# GRAMPS.me (formerly gramps.top)
 
-Static landing page for **GRAMPS.top** — Dan Barton's porch-light site:
+Static site for **GRAMPS.me** — Dan Barton's porch-light site:
 the stories, the humor, and the wisdom that comes with 71 years.
 
-One hand-built HTML page styled with a locally compiled Tailwind CSS build.
+As of Oct 2026 the primary domain is **gramps.me**; gramps.top should forward
+to it (see Hosting). The folder keeps its old name so the git remote and local
+paths don't change.
+
+Hand-built HTML pages styled with a locally compiled Tailwind CSS build.
 No framework, no runtime — static files you can host anywhere (GitHub Pages,
 Netlify, Cloudflare Pages, plain Apache/Nginx).
 
 ## Pages
 
-| File         | Page                                                    |
-| ------------ | ------------------------------------------------------- |
-| `index.html` | Everything — hero, what's here, GUS, bio, network, CTA  |
+| File                | Page                                                         |
+| ------------------- | ------------------------------------------------------------ |
+| `index.html`        | Home — hero, what's here, GUS, bio, Santa GRAMPS, network, CTA |
+| `stories.html`      | Story list — one card per story                              |
+| `story-sample.html` | Story template, with the comments area at the end            |
+| `poetry.html`       | Poems, shown in full, newest first                           |
 
-It's a single page with anchor sections (`#whats-here`, `#gus`, `#who`,
-`#connect`). When a section outgrows the page — the stories, most likely —
-break it out into its own file and switch the nav links over.
+The home page keeps its anchor sections (`#whats-here`, `#gus`, `#who`,
+`#santa`, `#connect`); the other pages link to them as `index.html#who`.
+
+### Adding a story or a poem
+
+- **Story:** copy `story-sample.html` to `story-<short-name>.html`, write the
+  story, then copy the card in `stories.html` and point it at the new file.
+  Remove the `noindex` meta tag in the copy.
+- **Poem:** copy an `<article>` block in `poetry.html`, give it a new `id`, and
+  paste the poem into `<div class="poem">` — line breaks are kept as written.
+
+Rebuild the CSS after either (`npm run build`).
+
+The sample story and poem are placeholders marked "Sample". How Dan submits
+his own writing and how reader comments work hasn't been decided yet — the
+comments area on the story page is a mailto fallback until a comment system
+is picked.
 
 ## Develop & Build
 
@@ -91,8 +112,20 @@ thin inner ring, while 16/32 drop the ring and set the letter larger — at
 result at true 16px before shipping, not zoomed in.
 
 
+## Links out
+
+- **Santa GRAMPS** (nav, footer, home section) → https://santagramps.com
+- **Shop** (nav, footer) → `https://shop-url-here.fourthwall.com`, a placeholder
+  until Dan's Fourthwall shop URL is known. The same placeholder is used on
+  every site in the network; see `santagramps.com/README.md` for a one-line
+  swap.
+
 ## Hosting
 
 Intended for **GitHub Pages** with a custom domain via the `CNAME` file →
-`gramps.top`. Static only, so there's no server-side form — the Say Hello
+`gramps.me`. Order matters when switching: point gramps.me's DNS at GitHub
+Pages first, push the new `CNAME`, then make gramps.top a redirect to
+https://gramps.me (a Cloudflare redirect rule, since gramps.top is already on
+Cloudflare). GitHub Pages serves only the one domain in `CNAME`, so gramps.top
+stops working on its own the moment the new `CNAME` is live. Static only, so there's no server-side form — the Say Hello
 section uses a `mailto:` link to **DRB@danbarton.me**, same as danbarton.me.
