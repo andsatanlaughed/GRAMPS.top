@@ -81,4 +81,34 @@
   .prose-warm p + p {
     @apply mt-5;
   }
+  /* Story bodies come from Markdown (or Dan's editor), so style the rest of
+     what it can produce, too. */
+  .prose-warm > * + * {
+    @apply mt-5;
+  }
+  .prose-warm blockquote {
+    @apply my-10 border-l-4 border-brand-gold pl-6;
+  }
+  .prose-warm blockquote p {
+    @apply font-serif text-2xl italic leading-snug text-ink;
+  }
+  .prose-warm h2,
+  .prose-warm h3 {
+    @apply mt-10 font-serif text-3xl font-semibold text-ink;
+  }
+  .prose-warm a {
+    @apply font-medium text-brand-gold-deep underline decoration-brand-gold/40 underline-offset-4 hover:text-brand-gold-dark;
+  }
+  .prose-warm strong {
+    @apply font-semibold text-ink;
+  }
+  .prose-warm ul,
+  .prose-warm ol {
+    @apply space-y-2 pl-6 text-lg text-ink-soft;
+  }
+  .prose-warm ul { @apply list-disc; }
+  .prose-warm ol { @apply list-decimal; }
+  .prose-warm img {
+    @apply my-8 rounded-2xl border border-ink/10 shadow-photo;
+  }
 }

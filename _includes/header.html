@@ -1,0 +1,48 @@
+{%- comment -%}
+  Site header. Pass active="stories" or active="poetry" to highlight that link.
+  Shop is always the last item, on every site in the network (Dan's rule).
+{%- endcomment -%}
+{%- assign home = '/' | relative_url -%}
+  <!-- ===================== PRE-LAUNCH NOTICE ===================== -->
+  <div class="build-notice">
+    <span class="build-dot" aria-hidden="true"></span>
+    <span><b>Still building this porch.</b> New writing goes up through 2026 — pull up a chair anyway.</span>
+  </div>
+
+  <!-- ===================== HEADER ===================== -->
+  <header class="sticky top-0 z-50 border-b border-ink/10 bg-paper/85 backdrop-blur-md">
+    <div class="container-page flex items-center justify-between py-3">
+      <a href="{{ home }}" class="flex items-center gap-3">
+        <img src="{{ '/images/logo-drb.jpg' | relative_url }}" alt="DRB monogram" class="h-11 w-11 rounded-full object-cover ring-1 ring-ink/15" />
+        <span class="leading-tight">
+          <span class="block font-serif text-xl font-semibold tracking-wide text-ink">GRAMPS<span class="text-brand-gold">.me</span></span>
+          <span class="block text-[11px] uppercase tracking-[0.18em] text-ink-muted">Stories. Humor. 72 years.</span>
+        </span>
+      </a>
+
+      <nav class="hidden items-center gap-7 lg:flex">
+        <a href="{{ '/stories.html' | relative_url }}" class="nav-link{% if include.active == 'stories' %} is-active{% endif %}">Stories</a>
+        <a href="{{ '/poetry.html' | relative_url }}" class="nav-link{% if include.active == 'poetry' %} is-active{% endif %}">Poetry</a>
+        <a href="{{ home }}#who" class="nav-link">Who's GRAMPS</a>
+        <a href="https://santagramps.com" target="_blank" rel="noopener noreferrer" class="nav-link">Santa GRAMPS</a>
+        <a href="{{ home }}#connect" class="btn-primary !px-5 !py-2">Say Hello</a>
+        <a href="{{ site.shop_url }}" target="_blank" rel="noopener noreferrer" class="nav-link inline-flex items-center gap-1.5">{% include icon-shop.html %}Shop</a>
+      </nav>
+
+      <!-- Mobile menu toggle -->
+      <button id="navToggle" class="lg:hidden p-2 text-ink" aria-label="Open menu" aria-expanded="false">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16" /></svg>
+      </button>
+    </div>
+    <!-- Mobile menu -->
+    <div id="mobileNav" class="hidden border-t border-ink/10 bg-paper lg:hidden">
+      <nav class="container-page flex flex-col gap-1 py-3">
+        <a href="{{ '/stories.html' | relative_url }}" class="nav-link py-2{% if include.active == 'stories' %} is-active{% endif %}">Stories</a>
+        <a href="{{ '/poetry.html' | relative_url }}" class="nav-link py-2{% if include.active == 'poetry' %} is-active{% endif %}">Poetry</a>
+        <a href="{{ home }}#who" class="nav-link py-2">Who's GRAMPS</a>
+        <a href="https://santagramps.com" target="_blank" rel="noopener noreferrer" class="nav-link py-2">Santa GRAMPS</a>
+        <a href="{{ home }}#connect" class="nav-link py-2">Say Hello</a>
+        <a href="{{ site.shop_url }}" target="_blank" rel="noopener noreferrer" class="nav-link inline-flex items-center gap-1.5 py-2">{% include icon-shop.html %}Shop</a>
+      </nav>
+    </div>
+  </header>

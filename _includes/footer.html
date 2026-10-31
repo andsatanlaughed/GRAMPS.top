@@ -1,0 +1,25 @@
+{%- assign home = '/' | relative_url -%}
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="border-t border-ink/10 bg-paper-deep">
+    <div class="container-page py-12">
+      <div class="flex flex-col items-center gap-4 text-center">
+        <img src="{{ '/images/logo-drb.jpg' | relative_url }}" alt="DRB monogram" class="h-12 w-12 rounded-full object-cover ring-1 ring-ink/15" />
+        <p class="font-script text-2xl text-brand-red-deep">#WhereGodRepurposesSkeletons</p>
+        <nav class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-ink-soft">
+          <a href="{{ home }}#whats-here" class="nav-link">What's Here</a>
+          <a href="{{ '/stories.html' | relative_url }}" class="nav-link">Stories</a>
+          <a href="{{ '/poetry.html' | relative_url }}" class="nav-link">Poetry</a>
+          <a href="{{ home }}#gus" class="nav-link">GUS</a>
+          <a href="{{ home }}#who" class="nav-link">Who's GRAMPS</a>
+          <a href="https://santagramps.com" target="_blank" rel="noopener noreferrer" class="nav-link">Santa GRAMPS</a>
+          <a href="{{ home }}#connect" class="nav-link">Say Hello</a>
+          <a href="https://www.danbarton.me" target="_blank" rel="noopener noreferrer" class="nav-link">danbarton.me</a>
+          <a href="{{ site.shop_url }}" target="_blank" rel="noopener noreferrer" class="nav-link inline-flex items-center gap-1.5">{% include icon-shop.html %}Shop</a>
+        </nav>
+        <p class="text-xs italic text-ink-muted">Written in the spirit of GUS — GRAMPS Unique Style. DRB.</p>
+        <p class="mt-2 text-xs uppercase tracking-wider text-ink-muted">© <span id="year">2026</span> And Satan Laughed, LLC &nbsp;|&nbsp; Dan Barton &nbsp;|&nbsp; Jefferson, GA</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="{{ '/js/main.js' | relative_url }}"></script>

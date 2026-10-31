@@ -1,0 +1,70 @@
+# Pages CMS (https://pagescms.org) — the browser editor Dan uses to post
+# poems and stories. Sign in at https://app.pagescms.org with the GitHub
+# account that owns this repo, open this repo, and these two sections appear.
+# Saving commits the file; GitHub Pages rebuilds the site in a minute or two.
+
+media:
+  input: images/uploads
+  output: /images/uploads
+
+content:
+  - name: poems
+    label: Poems
+    type: collection
+    path: _poems
+    filename: "{year}-{month}-{day}-{primary}.md"
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: date
+        label: Date
+        type: date
+        required: true
+      - name: epigraph
+        label: Opening line (optional)
+        description: A line set in italics above the poem.
+        type: string
+      - name: poem
+        label: Poem
+        description: Type it exactly as it should look — every line break stays where you put it. Leave an empty line between stanzas.
+        type: text
+        required: true
+      - name: afterword
+        label: A few words after the poem (optional)
+        type: text
+      - name: note
+        label: Small print (optional)
+        description: e.g. "Formerly titled …" or "Registered copyright."
+        type: string
+
+  - name: stories
+    label: Stories
+    type: collection
+    path: _stories
+    filename: "{year}-{month}-{day}-{primary}.md"
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: date
+        label: Date
+        type: date
+        required: true
+      - name: teaser
+        label: Teaser
+        description: One or two sentences for the story list — the hook that makes someone pour another cup.
+        type: text
+      - name: image
+        label: Photo (optional)
+        type: image
+      - name: image_alt
+        label: Describe the photo (optional)
+        description: A few words for readers who can't see the picture.
+        type: string
+      - name: body
+        label: Story
+        type: rich-text
+        required: true

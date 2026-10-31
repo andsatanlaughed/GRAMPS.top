@@ -1,0 +1,42 @@
+# GitHub Pages builds this site with Jekyll.
+# Pages with front matter (index, stories, poetry, and each story) share the
+# header, footer and head in _includes/. Stories and poems are plain files in
+# _stories/ and _poems/ — see README.md, "Posting a poem or a story".
+
+title: GRAMPS.me
+description: Dan Barton on being somebody's GRAMPS — the humor, the stories, and the wisdom that only comes from 72 years of living. Jefferson, Georgia.
+url: https://gramps.me
+baseurl: ""
+
+# The Shop link in the menu and footer. Swap in Dan's Fourthwall shop URL here.
+shop_url: https://shop-url-here.fourthwall.com
+
+# Reader comments on stories, via Cusdis (https://cusdis.com): readers leave a
+# name and a comment, no account; nothing shows until it's approved.
+# Paste the App ID from the Cusdis dashboard here. While it's empty, stories
+# show an email link instead.
+cusdis_app_id: ""
+
+collections:
+  stories:
+    output: true
+    permalink: /stories/:title/
+  poems:
+    output: false
+
+defaults:
+  - scope:
+      type: stories
+    values:
+      layout: story
+
+exclude:
+  - README.md
+  - package.json
+  - package-lock.json
+  - tailwind.config.js
+  - src
+  - node_modules
+  - Gemfile
+  - Gemfile.lock
+  - vendor

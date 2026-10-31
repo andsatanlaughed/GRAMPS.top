@@ -1,57 +1,82 @@
 # GRAMPS.me (formerly gramps.top)
 
 Static site for **GRAMPS.me** — Dan Barton's porch-light site:
-the stories, the humor, and the wisdom that comes with 71 years.
+the stories, the humor, and the wisdom that comes with 72 years.
 
 As of Oct 2026 the primary domain is **gramps.me**; gramps.top should forward
 to it (see Hosting). The folder keeps its old name so the git remote and local
 paths don't change.
 
-Hand-built HTML pages styled with a locally compiled Tailwind CSS build.
-No framework, no runtime — static files you can host anywhere (GitHub Pages,
-Netlify, Cloudflare Pages, plain Apache/Nginx).
+Hand-built HTML styled with a locally compiled Tailwind CSS build, assembled by
+**Jekyll** — which GitHub Pages runs on every push, so there's nothing extra to
+deploy. Pages without front matter are copied as-is.
 
 ## Pages
 
-| File                | Page                                                         |
-| ------------------- | ------------------------------------------------------------ |
-| `index.html`        | Home — hero, what's here, GUS, bio, Santa GRAMPS, network, CTA |
-| `stories.html`      | Story list — one card per story                              |
-| `story-sample.html` | Story template, with the comments area at the end            |
-| `poetry.html`       | Poems, shown in full, newest first                           |
+| File                    | Page                                                         |
+| ----------------------- | ------------------------------------------------------------ |
+| `index.html`            | Home — hero, what's here, GUS, bio, Santa GRAMPS, network, CTA |
+| `stories.html`          | Story list, built from `_stories/`, newest first             |
+| `_layouts/story.html`   | One story — body, "— GRAMPS", comments, more stories         |
+| `poetry.html`           | Poems shown in full, built from `_poems/`, newest first      |
 
-The home page keeps its anchor sections (`#whats-here`, `#gus`, `#who`,
-`#santa`, `#connect`); the other pages link to them as `index.html#who`.
+Shared pieces live in `_includes/`: `head.html`, `header.html` (menu — Shop is
+always last), `footer.html`, `comments.html`. Edit the menu there once and every
+page follows. Site-wide settings — the **Shop URL** and the **Cusdis App ID** —
+are in `_config.yml`.
 
-### Adding a story or a poem
+Stories get their own address: `_stories/2026-10-31-divine-intervention-and-the-cpap-mask.md`
+→ `gramps.me/stories/divine-intervention-and-the-cpap-mask/`.
 
-- **Story:** copy `story-sample.html` to `story-<short-name>.html`, write the
-  story, then copy the card in `stories.html` and point it at the new file.
-  Remove the `noindex` meta tag in the copy.
-- **Poem:** copy an `<article>` block in `poetry.html`, give it a new `id`, and
-  paste the poem into `<div class="poem">` — line breaks are kept as written.
+## Posting a poem or a story
 
-Rebuild the CSS after either (`npm run build`).
+**Dan posts from his browser (phone or computer) with Pages CMS** —
+https://app.pagescms.org. Sign in with the GitHub account that owns this repo,
+open the repo, and "Poems" and "Stories" appear as simple forms (title, date,
+the poem or story, optional photo). Saving commits a file; GitHub Pages
+rebuilds the site in a minute or two. The forms are defined in `.pages.yml`.
 
-The sample story and poem are placeholders marked "Sample". How Dan submits
-his own writing and how reader comments work hasn't been decided yet — the
-comments area on the story page is a mailto fallback until a comment system
-is picked.
+To do it by hand instead, add a Markdown file:
+
+- **Poem** — `_poems/YYYY-MM-DD-short-name.md`, front matter only. Put the poem
+  in a `poem: |` block; every line break and blank stanza line is kept.
+  Optional: `epigraph`, `afterword`, `note`.
+- **Story** — `_stories/YYYY-MM-DD-short-name.md` with `title`, `date` and a
+  `teaser`, then the story as ordinary paragraphs. A line starting with `>`
+  becomes a pull quote. Optional: `image`, `image_alt`.
+
+The first poem ("Picture Or Story", from Dan's Jul 19, 2026 text) and first
+story ("Divine Intervention and the CPAP Mask", from the old PictureOrStory
+site) are Dan's own.
+
+## Comments
+
+Each story ends with a comments section powered by **Cusdis** (https://cusdis.com):
+readers type a name and a comment — no account — and nothing appears until it's
+approved from the Cusdis dashboard or the email it sends.
+
+To switch it on: create a free Cusdis account, add a website, and paste its
+**App ID** into `cusdis_app_id` in `_config.yml`. Until then the section shows
+a "Write to GRAMPS" email link (DRB@danbarton.me) instead.
 
 ## Develop & Build
 
 Tailwind is installed locally (no CDN). The CSS compiles from `src/input.css`
-to `style.css`.
+to `style.css`, scanning the pages, `_includes/` and `_layouts/`.
 
 ```bash
 npm install        # one time
 npm run build      # compile + minify style.css for production
 npm run watch      # rebuild style.css on change while developing
-npm run serve      # http://localhost:8000
 ```
 
-Re-run `npm run build` after editing `index.html` (it holds the Tailwind
-classes) or `src/input.css`. **A change that isn't rebuilt won't show up.**
+Re-run `npm run build` after changing classes in any page, include or layout,
+or in `src/input.css`. **A change that isn't rebuilt won't show up.** New poems
+and stories don't need a rebuild — they use classes that are already there.
+
+To preview the whole site locally you need Jekyll (`gem install jekyll`), then
+`jekyll serve` and open http://localhost:4000. A plain static server won't
+work any more: the includes and the poem/story lists are filled in by Jekyll.
 
 ## Design system
 
@@ -115,10 +140,10 @@ result at true 16px before shipping, not zoomed in.
 ## Links out
 
 - **Santa GRAMPS** (nav, footer, home section) → https://santagramps.com
-- **Shop** (nav, footer) → `https://shop-url-here.fourthwall.com`, a placeholder
-  until Dan's Fourthwall shop URL is known. The same placeholder is used on
-  every site in the network; see `santagramps.com/README.md` for a one-line
-  swap.
+- **Shop** (last item in the menu and footer, with a bag icon) → `shop_url` in
+  `_config.yml`, currently the placeholder `https://shop-url-here.fourthwall.com`
+  until Dan's Fourthwall shop URL is known. The other sites hard-code the same
+  placeholder; see `santagramps.com/README.md` for a one-line swap across all.
 
 ## Hosting
 
