@@ -3,9 +3,9 @@
 # header, footer and head in _includes/. Stories and poems are plain files in
 # _stories/ and _poems/ — see README.md, "Posting a poem or a story".
 
-title: GRAMPS.me
+title: GRAMPS.top
 description: Dan Barton on being somebody's GRAMPS — the humor, the stories, and the wisdom that only comes from 72 years of living. Jefferson, Georgia.
-url: https://gramps.me
+url: https://gramps.top
 baseurl: ""
 
 # The Shop link in the menu and footer. Swap in Dan's Fourthwall shop URL here.

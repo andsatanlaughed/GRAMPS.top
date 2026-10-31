@@ -1,11 +1,11 @@
-# GRAMPS.me (formerly gramps.top)
+# GRAMPS.top
 
-Static site for **GRAMPS.me** — Dan Barton's porch-light site:
+Static site for **GRAMPS.top** — Dan Barton's porch-light site:
 the stories, the humor, and the wisdom that comes with 72 years.
 
-As of Oct 2026 the primary domain is **gramps.me**; gramps.top should forward
-to it (see Hosting). The folder keeps its old name so the git remote and local
-paths don't change.
+Dan registered **gramps.me** in Oct 2026 and wants it to become the main
+address, with gramps.top forwarding to it. That's on hold until we have access
+to gramps.me's DNS, so the site stays at **gramps.top** for now (see Hosting).
 
 Hand-built HTML styled with a locally compiled Tailwind CSS build, assembled by
 **Jekyll** — which GitHub Pages runs on every push, so there's nothing extra to
@@ -26,7 +26,7 @@ page follows. Site-wide settings — the **Shop URL** and the **Cusdis App ID** 
 are in `_config.yml`.
 
 Stories get their own address: `_stories/2026-10-31-divine-intervention-and-the-cpap-mask.md`
-→ `gramps.me/stories/divine-intervention-and-the-cpap-mask/`.
+→ `gramps.top/stories/divine-intervention-and-the-cpap-mask/`.
 
 ## Posting a poem or a story
 
@@ -147,10 +147,15 @@ result at true 16px before shipping, not zoomed in.
 
 ## Hosting
 
-Intended for **GitHub Pages** with a custom domain via the `CNAME` file →
-`gramps.me`. Order matters when switching: point gramps.me's DNS at GitHub
-Pages first, push the new `CNAME`, then make gramps.top a redirect to
-https://gramps.me (a Cloudflare redirect rule, since gramps.top is already on
-Cloudflare). GitHub Pages serves only the one domain in `CNAME`, so gramps.top
-stops working on its own the moment the new `CNAME` is live. Static only, so there's no server-side form — the Say Hello
-section uses a `mailto:` link to **DRB@danbarton.me**, same as danbarton.me.
+**GitHub Pages** with a custom domain via the `CNAME` file → `gramps.top`.
+Static only, so there's no server-side form — the Say Hello section uses a
+`mailto:` link to **DRB@danbarton.me**, same as danbarton.me.
+
+### Moving to gramps.me later
+
+Once we have access to gramps.me's DNS (NameSilo), order matters: point
+gramps.me at GitHub Pages first, then change `CNAME`, `url` in `_config.yml`
+and the ".top" in `_includes/header.html` and the page titles, and push; then
+make gramps.top a redirect to https://gramps.me (a Cloudflare redirect rule,
+since gramps.top is on Cloudflare). GitHub Pages serves only the one domain in
+`CNAME`, so changing it before gramps.me's DNS is ready takes the site offline.
