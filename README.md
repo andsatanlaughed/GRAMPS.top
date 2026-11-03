@@ -1,11 +1,11 @@
-# GRAMPS.top
+# GRAMPS.me (formerly gramps.top)
 
-Static site for **GRAMPS.top** — Dan Barton's porch-light site:
+Static site for **GRAMPS.me** — Dan Barton's porch-light site:
 the stories, the humor, and the wisdom that comes with 72 years.
 
-Dan registered **gramps.me** in Oct 2026 and wants it to become the main
-address, with gramps.top forwarding to it. That's on hold until we have access
-to gramps.me's DNS, so the site stays at **gramps.top** for now (see Hosting).
+Since Nov 3, 2026 the address is **gramps.me**; gramps.top forwards to it
+(see Hosting). The folder keeps its old name so the git remote and local paths
+don't change.
 
 Hand-built HTML styled with a locally compiled Tailwind CSS build, assembled by
 **Jekyll** — which GitHub Pages runs on every push, so there's nothing extra to
@@ -26,7 +26,7 @@ page follows. Site-wide settings — the **Shop URL** and the **Cusdis App ID** 
 are in `_config.yml`.
 
 Stories get their own address: `_stories/2026-10-31-divine-intervention-and-the-cpap-mask.md`
-→ `gramps.top/stories/divine-intervention-and-the-cpap-mask/`.
+→ `gramps.me/stories/divine-intervention-and-the-cpap-mask/`.
 
 ## Posting a poem or a story
 
@@ -85,7 +85,7 @@ Same DNA as andsatanlaughed.com and danbarton.me — Cormorant Garamond
 from Google Fonts in the page `<head>`.
 
 The difference is which brand color leads. The flagship leads with red;
-**GRAMPS.top leads with gold** (`brand.gold` `#b8891f`) and keeps red as the
+**GRAMPS.me leads with gold** (`brand.gold` `#b8891f`) and keeps red as the
 accent on the handwritten lines. Warm `paper` cream, warm near-black `ink`.
 All of it is in `tailwind.config.js`; the reusable component classes
 (`.btn-primary`, `.card`, `.eyebrow`, `.nav-link`) are in `src/input.css`.
@@ -99,7 +99,7 @@ Keep small gold text on `gold-deep`.
 
 ## Copy note
 
-GRAMPS.top is deliberately *not* the GROWTH CONCEPT site — those live at
+GRAMPS.me is deliberately *not* the GROWTH CONCEPT site — those live at
 Growth-Concept.com, which is linked from the network section. Keep this page
 on the personal side: stories, humor, hard-won wisdom.
 
@@ -119,7 +119,7 @@ If those are re-cropped on danbarton.me, re-copy them here.
 ### Favicons
 
 Each site in the network gets its own mark so the tabs are tellable apart —
-gramps.top is a cream **G** on brand gold, godrepurposesskeletons.com is a
+gramps.me is a cream **G** on brand gold, godrepurposesskeletons.com is a
 bone **S** on brand red, both set in Cormorant Garamond to match the display
 face. They're generated, not hand-drawn:
 
@@ -147,15 +147,12 @@ result at true 16px before shipping, not zoomed in.
 
 ## Hosting
 
-**GitHub Pages** with a custom domain via the `CNAME` file → `gramps.top`.
-Static only, so there's no server-side form — the Say Hello section uses a
-`mailto:` link to **DRB@danbarton.me**, same as danbarton.me.
+**GitHub Pages** with a custom domain via the `CNAME` file → `gramps.me`
+(DNS on Cloudflare, pointing at `andsatanlaughed.github.io`). Static only, so
+there's no server-side form — the Say Hello section uses a `mailto:` link to
+**DRB@danbarton.me**, same as danbarton.me.
 
-### Moving to gramps.me later
-
-Once we have access to gramps.me's DNS (NameSilo), order matters: point
-gramps.me at GitHub Pages first, then change `CNAME`, `url` in `_config.yml`
-and the ".top" in `_includes/header.html` and the page titles, and push; then
-make gramps.top a redirect to https://gramps.me (a Cloudflare redirect rule,
-since gramps.top is on Cloudflare). GitHub Pages serves only the one domain in
-`CNAME`, so changing it before gramps.me's DNS is ready takes the site offline.
+GitHub Pages serves only the one domain in `CNAME`, so **gramps.top needs a
+redirect to https://gramps.me** — a Cloudflare redirect rule on the gramps.top
+zone (keep the path, e.g. `https://gramps.me${http.request.uri.path}`), so old
+links like gramps.top/poetry.html still land on the right page.
