@@ -1,5 +1,5 @@
 ---
-title: Picture Or Story
+title: Picture or Story
 date: 2026-07-19
 note: Formerly titled "Word Picture." Registered copyright.
 epigraph: Never Let a DECISION in Time DEFINE your Life.
