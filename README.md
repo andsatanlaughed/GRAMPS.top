@@ -141,9 +141,9 @@ result at true 16px before shipping, not zoomed in.
 
 - **Santa GRAMPS** (nav, footer, home section) → https://santagramps.com
 - **Shop** (last item in the menu and footer, with a bag icon) → `shop_url` in
-  `_config.yml`, currently the placeholder `https://shop-url-here.fourthwall.com`
-  until Dan's Fourthwall shop URL is known. The other sites hard-code the same
-  placeholder; see `santagramps.com/README.md` for a one-line swap across all.
+  `_config.yml`, Dan's Fourthwall shop at
+  `https://and-satan-laughed-shop.fourthwall.com`. The other sites hard-code the
+  same URL; see `santagramps.com/README.md` for a one-line swap across all.
 
 ## Hosting
 
